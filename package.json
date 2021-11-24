@@ -1,0 +1,15 @@
+{
+  "name": "personal-site-backend",
+  "version": "0.1.0",
+  "description": "Backend for registe.me",
+  "main": "index.js",
+  "repository": "git@github.com:RyBuilds/personal-site-backend.git",
+  "author": "Ryan Registe <ryan@registe.me>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "request": "^2.88.2"
+  }
+}
