@@ -1,5 +1,5 @@
 
-export interface RecentlyPlayed {
+export default interface RecentlyPlayed {
   name: string
   previewUrl: string
   url: string
