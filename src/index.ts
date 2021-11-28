@@ -1,7 +1,6 @@
 import express from 'express'
 import cors from 'cors'
 import Spotify from './spotify'
-import { refreshAccessToken } from './spotify/token'
 
 const port = process.env.PORT || 3000
 const app = express()
