@@ -27,7 +27,7 @@ export default class Spotify {
         return this.http.request(error.config)
       }
 			
-			return Promise.reject(error)
+      return Promise.reject(error)
     })
   }
 
