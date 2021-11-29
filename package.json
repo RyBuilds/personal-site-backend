@@ -9,8 +9,8 @@
   "private": false,
   "scripts": {
     "start": "ts-node -r dotenv/config src/index.ts",
-    "lint": "eslint --fix",
-    "lint:ci": "eslint --max-warnings=0"
+    "lint": "eslint --fix src/",
+    "lint:ci": "eslint --max-warnings=0 src/"
   },
   "dependencies": {
     "@types/cors": "^2.8.12",
@@ -31,7 +31,6 @@
     "eslint": "^8.3.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.27.1",
     "prettier": "^2.5.0"
   }
 }
