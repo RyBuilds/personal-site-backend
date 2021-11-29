@@ -10,7 +10,7 @@
   "scripts": {
     "start": "ts-node -r dotenv/config src/index.ts",
     "lint": "eslint --fix",
-    "lint:ci": "eslint --max-warnings=0"
+    "lint:ci": "eslint --max-warnings=0 src/"
   },
   "dependencies": {
     "@types/cors": "^2.8.12",

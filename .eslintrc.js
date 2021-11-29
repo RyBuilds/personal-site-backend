@@ -1,12 +1,13 @@
 module.exports = {
     "env": {
-        "browser": true,
+        "browser": false,
         "es2021": true
     },
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended",
-        "plugin:@typescript-eslint/recommended"
+        "plugin:@typescript-eslint/recommended",
+        "plugin:prettier/recommended"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -18,8 +19,10 @@ module.exports = {
     },
     "plugins": [
         "react",
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "prettier"
     ],
     "rules": {
+      "prettier/prettier": "error"
     }
 };
