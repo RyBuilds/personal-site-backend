@@ -1,6 +1,6 @@
 import axios, { Axios } from 'axios'
 import { fetchRecentlyPlayed as frp } from "./fetch-recently-played"
-import { refreshAccessToken } from './token'
+import { getAccessToken, refreshAccessToken } from './token'
 import SpotifyConfig from './model/SpotifyConfig'
 
 export default class Spotify {
@@ -16,15 +16,14 @@ export default class Spotify {
 
       if (response?.status === 401 && error.config && !error.config.__isRetryRequest) {
         try {
-          await refreshAccessToken(this.http, this.config)
+          const accessToken = await refreshAccessToken(this.http, this.config)
+          error.config.__isRetryRequest = true
+          error.config.headers = { ...error.config.headers, Authorization: `Bearer ${accessToken}` }
+          return this.http.request(error.config)
         } catch (authError) {
           // refreshing has failed, but report the original error, i.e. 401
           return Promise.reject(error)
         }
-        
-        // retry the original request
-        error.config.__isRetryRequest = true
-        return this.http.request(error.config)
       }
 			
       return Promise.reject(error)
