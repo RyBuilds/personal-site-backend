@@ -26,5 +26,6 @@ export const fetchRecentlyPlayed = async (
     url: track.external_urls.spotify,
     imageUrl: track.album.images[0].url,
     previewUrl: track.preview_url,
+    artistName: track.album.artists[0].name,
   };
 };

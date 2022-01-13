@@ -3,4 +3,5 @@ export default interface RecentlyPlayed {
   previewUrl: string;
   url: string;
   imageUrl: string;
+  artistName: string;
 }
