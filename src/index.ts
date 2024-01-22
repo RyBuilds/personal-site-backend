@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import Spotify from "./spotify";
+import Strava from "./strava";
 
 const port = process.env.PORT || 3000;
 const app = express();
@@ -10,6 +11,12 @@ const spotify = new Spotify({
   secret: process.env.SPOTIFY_SECRET ?? "",
   clientId: process.env.SPOTIFY_CLIENT_ID ?? "",
   refreshToken: process.env.SPOTIFY_REFRESH_TOKEN ?? "",
+});
+
+const strava = new Strava({
+  secret: process.env.STRAVA_SECRET ?? "",
+  clientId: process.env.STRAVA_CLIENT_ID ?? "",
+  refreshToken: process.env.STRAVA_REFRESH_TOKEN ?? "",
 });
 
 app.use(function (req, res, next) {
@@ -30,5 +37,16 @@ app.get("/v1/spotify", async function (req, res) {
       res.status(500).send({ error: error.message });
     });
 });
+
+app.get("/v1/strava", async function (req, res) {
+  return strava
+    .fetchLatestActivity()
+    .then((activity) => res.send(activity))
+    .catch((error) => {
+      console.log(`Error: ${error}`);
+      console.log("----");
+      res.status(500).send({ error: error.message });
+    });
+})
 
 app.listen(port, () => console.log(`🛰️  Listening on port ${port}`));
